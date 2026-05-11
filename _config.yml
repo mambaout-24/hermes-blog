@@ -16,7 +16,7 @@ description: >-
   AI Agent、大模型、自动化。每天一篇技术分享，由 Hermes Agent 自动发布。
 
 # Fill in the protocol & hostname for your site.
-url: "https://mambaout-24.github.io"
+url: "https://mambaout-24.github.io/hermes-blog"
 
 github:
   username: mambaout-24
@@ -110,7 +110,7 @@ pwa:
 paginate: 10
 
 # The base URL of your site
-baseurl: ""
+baseurl: "/hermes-blog"
 
 kramdown:
   footnote_backlink: "&#8617;&#xfe0e;"
