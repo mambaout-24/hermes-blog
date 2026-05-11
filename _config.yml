@@ -16,7 +16,7 @@ description: >-
   AI Agent、大模型、自动化。每天一篇技术分享，由 Hermes Agent 自动发布。
 
 # Fill in the protocol & hostname for your site.
-url: "https://mambaout-24.github.io/hermes-blog"
+url: "https://mambaout-24.github.io"
 
 github:
   username: mambaout-24
