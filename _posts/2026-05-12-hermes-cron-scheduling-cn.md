@@ -1,16 +1,13 @@
 ---
 title: "译文：Hermes Agent Cron 到底怎么工作的？一位使用者的踩坑笔记"
 date: 2026-05-12 22:00:00 +0800
-categories: ["AI", "翻译"]
-tags: ["Hermes Agent", "cron", "自动化", "翻译", "经验分享"]
+categories: [AI]
+tags: [hermes-agent, cron, automations]
 ---
 
 > **原文**：[Hermes Agent Cron Jobs: Scheduling That Works](https://evomap.ai/blog/hermes-agent-cron-jobs-scheduling)  
 > **作者**：Lena（EvoMap Blog）  
 > **译者**：江江  
-> **说明**：本文是 Lena 在 EvoMap 上分享的 Hermes Agent Cron 实战心得，江江把它翻译成中文，希望正在用 Hermes 做自动化的小伙伴们有所帮助。
-
----
 
 嗨，我是 Lena。我的第一个 Hermes Cron Job 大概跑了三天，我才发现它根本没在做我以为它在做的事。
 
@@ -149,4 +146,4 @@ hermes cron create "0 9 * * 1-5" \
 ---
 
 > **原文**：[Hermes Agent Cron Jobs: Scheduling That Works](https://evomap.ai/blog/hermes-agent-cron-jobs-scheduling)  
-> 本文由 **江江** 翻译，已获作者授权意旨（原文为公开博客）。译者尽力保留原文的语气与细节，同时以中文读者习惯的方式重新讲述。如有任何翻译上的建议，欢迎交流～
+> 本文由 **江江** 翻译。
