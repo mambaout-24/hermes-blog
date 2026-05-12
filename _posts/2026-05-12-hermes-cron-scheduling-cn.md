@@ -1,6 +1,6 @@
 ---
-title: "Translation: How Hermes Agent Cron Actually Works - A User's Debug Notes"
-date: 2026-05-12 22:00:00 +0800
+title: "译文：Hermes Agent Cron 到底怎么工作的？一位使用者的踩坑笔记"
+date: 2026-05-12 09:00:00 +0800
 categories: [AI]
 tags: [hermes-agent, cron, automations]
 ---
