@@ -28,7 +28,7 @@ tags: [实验室智能体, WeKnora, Hermes Agent, RAG, 调研报告, 飞书]
 
 下图展示了整体的系统架构，由四个层级组成：
 
-![系统架构图 - WeKnora 五层模块化架构示意](/hermes-blog/assets/img/weknora-architecture.png)
+![系统架构图 - WeKnora 五层模块化架构示意](/assets/img/weknora-architecture.png)
 
 *图：WeKnora 官方架构图 —— 五层模块化设计：文档解析层 → 知识建模层 → 检索引擎层 → 大模型推理层 → 交互展示层*
 
@@ -77,13 +77,13 @@ WeKnora 是腾讯在 2026 年 4 月开源的企业级 RAG 框架（GitHub 14.9K 
 
 WeKnora 的五层模块化架构，让文档从原始文件到最终答案的转化过程清晰可控：
 
-![WeKnora RAG 问答流程示意](/hermes-blog/assets/img/weknora-answer.png)
+![WeKnora RAG 问答流程示意](/assets/img/weknora-answer.png)
 
 *图：WeKnora 回答界面 —— 支持引用溯源，每条回答都标注了来源文档片段*
 
 **集成方式**：WeKnora 官方提供了 MCP Server（Model Context Protocol），Hermes Agent 可以通过 MCP 协议直接调用 WeKnora 的文档检索、知识问答等接口，实现"Agent 大脑 + 知识库记忆"的协作模式。
 
-![WeKnora Agent 问答流程](/hermes-blog/assets/img/weknora-agent-qa.png)
+![WeKnora Agent 问答流程](/assets/img/weknora-agent-qa.png)
 
 *图：WeKnora Agent 问答流程 —— 支持多轮对话、引用溯源、知识图谱增强检索*
 
@@ -382,7 +382,7 @@ def sync_meeting_to_knowledge_base():
 
 ### 阶段一：核心搭建（1-2 周）
 
-![WeKnora WIKI 架构示意](/hermes-blog/assets/img/weknora-arc.png)
+![WeKnora WIKI 架构示意](/assets/img/weknora-arc.png)
 
 *图：WeKnora 的 RAG 检索到 WIKI 知识库构建的核心流程*
 
