@@ -9,13 +9,14 @@ import os
 import json
 import subprocess
 import sys
+import tempfile
 from datetime import datetime
 
-REPO_DIR = "/opt/data/hermes-blog-new"
+REPO_DIR = "/opt/data/hermes-blog"
 POSTS_DIR = os.path.join(REPO_DIR, "_posts")
 
-def run(cmd, cwd=None):
-    result = subprocess.run(cmd, shell=True, capture_output=True, text=True, cwd=cwd or REPO_DIR)
+def run(cmd, cwd=None, env=None):
+    result = subprocess.run(cmd, shell=True, capture_output=True, text=True, cwd=cwd or REPO_DIR, env=env)
     return result.stdout.strip(), result.stderr.strip(), result.returncode
 
 def git_push():
@@ -24,13 +25,30 @@ def git_push():
     if not token:
         return False, "GITHUB_TOKEN 环境变量未设置", ""
 
-    remote = f"https://mambaout-24:{token}@github.com/mambaout-24/hermes-blog.git"
     run("git add -A")
     stdout, stderr, code = run(f"git commit -m \"auto publish {datetime.now().strftime('%Y-%m-%d %H:%M')}\"")
     if "nothing to commit" in stdout.lower() or "nothing to commit" in stderr.lower():
         return True, "无新内容，跳过推送", ""
-    stdout, stderr, code = run(f"git push {remote} main")
-    return code == 0, stdout, stderr
+
+    askpass = """#!/bin/sh
+case "$1" in
+  *Username*) printf '%s\n' 'mambaout-24' ;;
+  *Password*) printf '%s\n' "$GITHUB_TOKEN" ;;
+  *) printf '%s\n' '' ;;
+esac
+"""
+    with tempfile.NamedTemporaryFile("w", delete=False) as helper:
+        helper.write(askpass)
+        helper_path = helper.name
+    try:
+        os.chmod(helper_path, 0o700)
+        env = os.environ.copy()
+        env["GIT_ASKPASS"] = helper_path
+        env["GIT_TERMINAL_PROMPT"] = "0"
+        stdout, stderr, code = run("git push origin main", env=env)
+        return code == 0, stdout, stderr
+    finally:
+        os.unlink(helper_path)
 
 def publish_article(title, content, categories=None, tags=None):
     """保存文章到 _posts/ 目录并推送"""
@@ -54,7 +72,7 @@ tags: {json.dumps(tg, ensure_ascii=False)}
 
     os.makedirs(POSTS_DIR, exist_ok=True)
     filepath = os.path.join(POSTS_DIR, filename)
-    with open(filepath, "w") as f:
+    with open(filepath, "w", encoding="utf-8") as f:
         f.write(full_content)
 
     success, stdout, stderr = git_push()
